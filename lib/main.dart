@@ -80,7 +80,7 @@ class _FormPageState extends State<FormPage> {
               ),
               TextFormField(
                 obscureText: true,
-                validator: (value) => (value.length<6) ? "Password too short" : null,
+                validator: (value) => (value.length<6 || !value.contains(RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$'))) ? "Please enter a valid password. Password must contain an \n Uppercase letter, Lowercase letter, a number and a special \n character (@,#,%,&)" : null,
                 onSaved: (value)=> _password = value,
                 decoration: InputDecoration(
                   labelText: "Password",
